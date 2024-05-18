@@ -1,0 +1,129 @@
+[package]
+name = "hash_r1cs"
+version = "0.1.0"
+authors = ["Roman Walch <roman.walch@iaik.tugraz.at>"]
+description = "Rust implementations of different permutations in SNARK"
+edition = "2018"
+
+[dependencies]
+bellman_ce = {version="0.3.5", default-features=false}
+rand = "0.4" # held back for bellman_ce
+lazy_static = "1.4"
+sha3 = "0.9"
+
+[dev-dependencies]
+criterion = "0.3"
+
+[features]
+default = []
+multicore = ["bellman_ce/multicore"]
+
+[[bench]]
+name = "merkle_proof_bls12"
+harness = false
+
+[[bench]]
+name = "merkle_proof_bn256"
+harness = false
+
+[[bench]]
+name = "perm_proof_bls12"
+harness = false
+
+[[bench]]
+name = "perm_proof_bn256"
+harness = false
+
+[[bench]]
+name = "plain_bls12"
+harness = false
+
+[[bench]]
+name = "plain_bn256"
+harness = false
+
+[[example]]
+name = "griffin_mt"
+path = "examples/griffin_mt.rs"
+
+[[example]]
+name = "rescue_mt"
+path = "examples/rescue_mt.rs"
+
+[[example]]
+name = "poseidon_mt"
+path = "examples/poseidon_mt.rs"
+
+[[example]]
+name = "grendel_mt"
+path = "examples/grendel_mt.rs"
+
+[[example]]
+name = "gmimc_mt"
+path = "examples/gmimc_mt.rs"
+
+[[example]]
+name = "neptune_mt"
+path = "examples/neptune_mt.rs"
+
+[[example]]
+name = "griffin"
+path = "examples/griffin.rs"
+
+[[example]]
+name = "rescue"
+path = "examples/rescue.rs"
+
+[[example]]
+name = "poseidon"
+path = "examples/poseidon.rs"
+
+[[example]]
+name = "grendel"
+path = "examples/grendel.rs"
+
+[[example]]
+name = "gmimc"
+path = "examples/gmimc.rs"
+
+[[example]]
+name = "neptune"
+path = "examples/neptune.rs"
+
+[profile.release]
+# Enable link-time optimization, eliminates more code and inlines across crate boundaries.
+# Default: false
+lto = true
+
+# codegen-units of 1 gives best optimization, but disables parallel building.
+# Default: 16
+codegen-units = 1
+
+# Includes debug information in release builds. Necessary for profiling. Does not
+# slow down the executable.
+debug = true
+
+# The default optimization level is 3 for release mode builds.
+# 0 means disable optimization and is the default for debug mode buids.
+# (Setting opt-level=1 for debug builds is a good way of speeding them up a bit.)
+# "s" means optimize for size, "z" reduces size even more.
+opt-level = 3
+
+[profile.bench]
+# Enable link-time optimization, eliminates more code and inlines across crate boundaries.
+# Default: false
+lto = true
+
+# codegen-units of 1 gives best optimization, but disables parallel building.
+# Default: 16
+codegen-units = 1
+
+# Includes debug information in release builds. Necessary for profiling. Does not
+# slow down the executable.
+debug = true
+
+# The default optimization level is 3 for release mode builds.
+# 0 means disable optimization and is the default for debug mode buids.
+# (Setting opt-level=1 for debug builds is a good way of speeding them up a bit.)
+# "s" means optimize for size, "z" reduces size even more.
+opt-level = 3
