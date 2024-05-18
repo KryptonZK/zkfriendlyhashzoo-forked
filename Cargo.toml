@@ -40,26 +40,6 @@ harness = false
 name = "fp_bn256"
 harness = false
 
-[[bench]]
-name = "fp_st"
-harness = false
-
-[[bench]]
-name = "fp4_bls12"
-harness = false
-
-[[bench]]
-name = "fp4_bn256"
-harness = false
-
-[[bench]]
-name = "fp4_st"
-harness = false
-
-[[bench]]
-name = "matrix_test"
-harness = false
-
 [[example]]
 name = "rc_bls12"
 path = "examples/rc_bls12.rs"

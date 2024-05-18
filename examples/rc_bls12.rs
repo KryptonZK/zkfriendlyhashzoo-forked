@@ -1,6 +1,6 @@
+use ff::hex::FromHex;
 use std::env;
 use std::fs;
-use ff::hex::FromHex;
 use zkhash::{
     fields::{bls12::FpBLS12, utils},
     reinforced_concrete::{
@@ -65,8 +65,9 @@ fn main() {
             return;
         }
     };
-    
-    let seed: &[usize] = unsafe {std::slice::from_raw_parts(u8_array.as_ptr() as *const usize, 16)};
+
+    let seed: &[usize] =
+        unsafe { std::slice::from_raw_parts(u8_array.as_ptr() as *const usize, 16) };
 
     println!("ReinforcedConcrete BLS12 Example");
     perm_example(seed);
